@@ -355,5 +355,5 @@ def designplot(pisel1, pisel2, variable, battery, charger):
     return fig
 
 
-if __name__ == "__main__":
-    app.run_server(debug=True)
+# if __name__ == "__main__":
+#    app.run_server(debug=True)
