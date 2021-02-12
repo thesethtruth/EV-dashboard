@@ -1,5 +1,5 @@
 # EV-dashboard
-Data browsing dashboard based on Dash, based on early version of the WB thesis energy model .
+Data browsing dashboard based on Dash, based on early version of the WB thesis energy model (27-01-2021).
 
  Data browsed is based on hourly timeseries, weekly totals and PI of every solution. Achieved using 2 DOFs, chargers and batterysize. 
  + Chargers = [ 1 : 1 : 4 ]
