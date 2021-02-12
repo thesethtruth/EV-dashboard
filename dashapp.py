@@ -7,7 +7,6 @@ import pandas as pd
 import dash_table
 from plotly.subplots import make_subplots
 
-
 # default values for DOFs
 defaultcharger = 3
 ## battery size is default set to the minimum value of corresponding selected amount of chargers, unless defined by user
@@ -32,21 +31,6 @@ colordict = {
     }
 # define linewidth
 linewidth = 0.3
-
-# # read timeseries
-# filepath = "outputdata/timeseries_1000.0kWh_3chargers.pkl"
-# timeseries = pd.read_pickle(filepath)
-# timeseries = timeseries/1e3         # kWh
-
-# # read yearly
-# filepath = "outputdata/yearly_1000.0kWh_3chargers.pkl"
-# yearly = pd.read_pickle(filepath)
-# yearly = yearly/1e6         # kWh
-
-# read financials
-# filepath = "outputdata/financials_1000.0kWh_3chargers.pkl"
-# financials = pd.read_pickle(filepath)
-
 
 # read performance indicators
 filepath = "outputdata/performanceindicators.pkl"
@@ -130,25 +114,8 @@ app.layout = html.Div([
             ),
             dcc.Graph(id="design-plot"),
             ]),
-            html.Div([
-            html.H3('Tabulated data of selected design') #,
-            # dash_table.DataTable(
-            #     id ='finance-table',
-            #     columns=[{"name": i, "id": i} 
-            #              for i in financials.columns],
-            #     data = financials.to_dict(orient='records'),
-            #     style_cell=dict(textAlign='left'),
-            #     )
-            ])    
+
 ])
-
-# styling options
-layoutstyling = dict(
-    paper_bgcolor  = 'white' ,
-    )
-
-
-
 
 ## corresponding battery size
 @app.callback(
@@ -208,7 +175,8 @@ def hourly(startingweek, battery, charger):
     fig.update_layout(
         title ="Total energy balance in week {startingweek} on hourly resolution".format(startingweek = startingweek),
         xaxis_title="Day of the year",
-        yaxis_title="Hourly power [KWh/h]"
+        yaxis_title="Hourly power [KWh/h]",
+        plot_bgcolor  = 'white', 
         )
     return fig
 
@@ -250,7 +218,8 @@ def weekly(battery, charger):
     fig.update_layout(
         title ="Total energy balance of the whole year on weekly average resolution",
         xaxis_title="Week of the year",
-        yaxis_title="Average weekly energy [MWh]"
+        yaxis_title="Average weekly energy [MWh]",
+        plot_bgcolor  = 'white', 
         )
     return fig
 
